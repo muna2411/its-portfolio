@@ -6,6 +6,12 @@ import Tilt from 'react-parallax-tilt'; //banner image er jonno
 import { Parallax } from 'react-parallax';
 
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
 const Nav = () => {
 
   const [userData, setUserData] = useState(null);
@@ -145,7 +151,18 @@ const Nav = () => {
               </div>
 
 
-     
+              <div className='my-[150px] ml-[20px]'>
+<TypeAnimation
+    sequence={[
+    'WHAT I DO . . . . . .',
+    100,
+    ]}
+    speed={50}
+    style={{ fontSize: '90px' }}
+    className="text-[#B2BEB5] font-b "
+    repeat={Infinity}
+/>
+</div>  
 {/* service */}
 
 <div className='grid grid-cols-2 mx-[100px] my-[100px]'>
@@ -180,9 +197,6 @@ const Nav = () => {
             <div className='grid grid-cols-4 gap-[50px] text-start '>
               {userData.user.skills.map((skill, index) => (
                   <div key={index}>
-                    {/* <Marquee>
-                    <img className='w-[80px] ' src={skill.image.url}></img>
-                    </Marquee> */}
                     <div className='flex justify-center items-center text-start gap-[20px]'>
                       <p className='text-[20px] text-start font-c text-black'>{skill.name}</p>
                       <progress className="progress w-56 h-[3px] text-black" value={skill.percentage} max="100"></progress>
@@ -198,27 +212,40 @@ const Nav = () => {
         <Marquee  speed="30">
           <img className="w-[80px]" src={userData.user.skills.image.url}  />
         </Marquee> */}
+
+
          {/* projects */}
-         <div className='mx-[100px]'>
+
+
+         <div className='my-[150px] ml-[20px]'>
+<TypeAnimation
+    sequence={[
+    'P R O J E C T S . . . . . .',
+    100,
+    ]}
+    speed={50}
+    style={{ fontSize: '90px' }}
+    className="text-[#B2BEB5] font-b "
+    repeat={Infinity}
+/>
+</div>
+
+         <div className='mx-[150px]'>
   <div className='grid grid-cols-3 gap-[50px] text-start mx-auto'>
     {userData.user.projects.map((project, index) => (
       <div key={index}>
         <button className='mx-auto' onClick={() => document.getElementById(`my_modal_${index}`).showModal()}>
           <Tilt>
-            <img className='w-[500px]' src={project.image.url} alt={project.title} />
+            <img className='w-[350px]' src={project.image.url} />
           </Tilt>
-          <p className='text-[20px] text-start font-c text-black'>{project.title}</p>
+          <p className='text-[20px] text-start font-c text-black'>{project.sequence} .</p>
         </button>
         <dialog id={`my_modal_${index}`} className="modal">
           <div className="modal-box">
+            <img></img>
             <h3 className="font-bold text-lg">{project.title}</h3>
             <p className="py-4">{project.description}</p>
             <p className="py-4">{project.techStack}</p>
-            {/* {userData.user.projects.techStack.map((pro, index) => (
-                <div key={index}>
-                    <p className='text-[20px] text-start font-c text-black'>{pro}</p>
-                </div>
-            ))} */}
             <button></button>
             <button></button>
             <div className="modal-action">
@@ -231,6 +258,65 @@ const Nav = () => {
       </div>
     ))}
   </div>
+</div>
+
+
+
+
+
+
+
+{/* testimonial */}
+
+<div className='my-[150px] ml-[20px]'>
+<TypeAnimation
+    sequence={[
+    'T E S T I M O N I A L . . . . . .',
+    100,
+    ]}
+    speed={50}
+    style={{ fontSize: '90px' }}
+    className="text-[#B2BEB5] font-b "
+    repeat={Infinity}
+/>
+</div>
+
+<div className='w-[1000px] h-[300px] mx-auto'>
+<Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper w-[1000px] h-[300px]"
+      >
+        <div className='w-[1000px] h-[300px]'>
+          {userData.user.testimonials.map((testimonial, index) => (
+            <div key={index}>
+                <SwiperSlide>
+                  <div className='flex justify-around items-center w-[800px] h-[300px] mx-[100px] my-[15px]'>
+                    <div>
+                       <img className='w-[200px] rounded-full' src={testimonial.image.url}></img>
+                    </div>
+                    <div className='text-black w-[600px] ml-[60px]'>
+                      <p className='text-[30px] font-b'>{testimonial.name}</p>
+                      <p className='text-[20px] text-[#29465B] font-c'>{testimonial.position}</p>
+                      <p className='mt-[10px] text-[17px] font-a'>{testimonial.review}</p>
+                    </div>
+                  </div>
+                
+                </SwiperSlide>
+            </div>
+          ))}
+
+        </div>
+      </Swiper>
 </div>
 
 
