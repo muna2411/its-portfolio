@@ -6,6 +6,12 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily : {
+      a:['Edu NSW ACT Foundation'],
+      b:['Anton'],
+      c:['DM Serif Display'],
+     
+    }
   },
   plugins: [require("daisyui")],
 }
