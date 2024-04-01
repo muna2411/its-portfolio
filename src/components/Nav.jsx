@@ -4,6 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 // import Marquee from "react-fast-marquee";
 import Tilt from 'react-parallax-tilt'; //banner image er jonno
 import { Parallax } from 'react-parallax';
+import { FaGithub } from 'react-icons/fa';
 
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -242,16 +243,21 @@ const Nav = () => {
         </button>
         <dialog id={`my_modal_${index}`} className="modal">
           <div className="modal-box">
-            <img></img>
-            <h3 className="font-bold text-lg">{project.title}</h3>
-            <p className="py-4">{project.description}</p>
-            <p className="py-4">{project.techStack}</p>
-            <button></button>
-            <button></button>
-            <div className="modal-action">
+          <div className="modal-action">
               <form method="dialog">
-                <button className="btn" onClick={() => document.getElementById(`my_modal_${index}`).close()}>Close</button>
+                <button className="btn rounded-full font-bold text-red-500" onClick={() => document.getElementById(`my_modal_${index}`).close()}>X</button>
               </form>
+            </div>
+            <img className='w-[250px] mx-auto' src={project.image.url} />
+            {/* <h3 className="font-bold text-[18px] text-black">{project.title}</h3> */}
+            
+            <p className='text-[22px] text-black font-bold divider'>About Project</p>
+            <img className='w-[50px]' src='https://i.ibb.co/x6r3JwZ/Untitled-design-1-removebg-preview.png'></img>
+            <p className="py-4 text-black ">{project.description}</p>
+            <p className="py-4 text-black font-c">Technology : <span className='text-[#29465B]'>{project.techStack}</span></p>
+            <div className='flex justify-around items-center'>
+            <button className='btn w-[150px] h-[50px] flex text-[15px]'>GitHub <FaGithub className='w-[50px] h-[30px]' /></button>
+            <button className='btn w-[150px] h-[50px] flex text-[15px]'>GitHub <FaGithub className='w-[50px] h-[30px]' /></button> 
             </div>
           </div>
         </dialog>
@@ -300,14 +306,14 @@ const Nav = () => {
           {userData.user.testimonials.map((testimonial, index) => (
             <div key={index}>
                 <SwiperSlide>
-                  <div className='flex justify-around items-center w-[800px] h-[300px] mx-[100px] my-[15px]'>
+                  <div className='flex justify-around items-center w-[800px] h-[300px] mx-[100px] my-[10px]'>
                     <div>
                        <img className='w-[200px] rounded-full' src={testimonial.image.url}></img>
                     </div>
                     <div className='text-black w-[600px] ml-[60px]'>
                       <p className='text-[30px] font-b'>{testimonial.name}</p>
                       <p className='text-[20px] text-[#29465B] font-c'>{testimonial.position}</p>
-                      <p className='mt-[10px] text-[17px] font-a'>{testimonial.review}</p>
+                      <p className='mt-[10px] text-[15px] '>{testimonial.review}</p>
                     </div>
                   </div>
                 
@@ -318,6 +324,60 @@ const Nav = () => {
         </div>
       </Swiper>
 </div>
+
+
+
+
+{/* education */}
+
+         <div className='flex justify-around items-center'>
+         <div className='mx-[100px]'>
+            <h2 className='text-[30px] font-a'>Education</h2>
+            <ul>
+              {userData.user.timeline.map(item => (
+                item.forEducation && (
+                  <li key={item._id}>
+                    <h3 className='text-[20px] font-b'>{item.company_name}</h3>
+                    <p className='text-[18px] font-c'>{item.jobTitle}</p>
+                    <div>
+              {item.bulletPoints.map((point, index) => (
+                <p key={index}>. {point}</p>
+              ))}
+            </div>
+                  </li>
+                )
+              ))}
+            </ul>
+          </div>
+
+          <div className="divider h-auto border-l border-gray-400 mt-[-0px]"></div>
+          {/* Example for rendering work experience section */}
+          <div className='mx-[100px]'>
+            <h2 className='text-[30px] font-a'>Work Experience</h2>
+            <ul className='gap-[20px]'>
+              {userData.user.timeline.map(item => (
+                !item.forEducation && (
+                  <li key={item._id} >
+                    <h3 className='text-[20px] font-b'>{item.company_name}</h3>
+                    <p className='text-[18px] font-c'>{item.jobTitle}</p>
+                    <p>{item.jobLocation}</p>
+                    <p>{item.startDate.substring(0, 10)} to {item.endDate.substring(0, 10)}</p>
+                    <p>{item.summary}</p>
+                    <div className='my-[20px]'>
+              {item.bulletPoints.map((point, index) => (
+                <p key={index}>. {point}</p>
+              ))}
+            </div>
+                  </li>
+                )
+              ))}
+            </ul>
+          </div>
+         </div>
+
+
+
+{/* FOOTER */}
 
 
             
