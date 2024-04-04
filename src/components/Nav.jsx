@@ -514,7 +514,7 @@ conRef.current?.scrollIntoView({behavior: 'smooth'});
       <input className="lg:w-[400px] md:w-[400px] sm:w-[300px] h-[50px] my-[20px]" style={{border: '2px solid black'}} type="email" name="user_email" required/>
       <label className="text-[20px] font-c text-[#1D1615]">Message</label>
       <textarea className="lg:w-[400px] md:w-[400px] sm:w-[300px] h-[100px] my-[20px]" style={{border: '2px solid black'}} name="message" required/>
-      <input className='w-[150px] h-[50px] bg-[#1D1615] text-white font-c ml-[250px]' type="submit" value="Send" />
+      <input className='w-[150px] h-[50px] bg-[#1D1615] text-white font-c lg:ml-[250px] md:ml-[200px] sm:ml-[150px]' type="submit" value="Send" />
     </form>
   </div>
 </div>
