@@ -10,6 +10,7 @@ export default {
       a:['Edu NSW ACT Foundation'],
       b:['Anton'],
       c:['DM Serif Display'],
+      d:['Archivo Black']
      
     }
   },
